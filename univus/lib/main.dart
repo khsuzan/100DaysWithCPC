@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show SystemChrome, SystemUiMode;
+import 'package:flutter/services.dart' show SystemChrome, SystemUiMode, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:univus/routes/routes.dart';
 
@@ -15,6 +15,7 @@ class MainApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
+          
           theme: ThemeData(
             primarySwatch: Colors.blue,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
@@ -29,7 +30,16 @@ class MainApp extends StatelessWidget {
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
+  SystemChrome.setSystemUIOverlayStyle(
+    SystemUiOverlayStyle(
+      systemNavigationBarColor: Colors.transparent, // Change as needed
+      systemNavigationBarContrastEnforced: false,
+      statusBarColor: Colors.transparent, // Change as needed
+      systemNavigationBarIconBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.light,
+    ),
+  );
 
   runApp(const MainApp());
 }
