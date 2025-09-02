@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
-    show SystemChrome, SystemUiMode, SystemUiOverlayStyle;
+    show SystemChrome, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+
+import '../../utils/themes.dart';
 
 class OnboardScreen extends StatefulWidget {
   const OnboardScreen({super.key});
@@ -29,7 +31,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF171B22),
+      backgroundColor: MyColors.background,
       body: Stack(
         children: [
           Positioned(
@@ -57,9 +59,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         decoration: BoxDecoration(
                           gradient: RadialGradient(
                             colors: [
-                              Color.fromARGB(255, 102, 255, 140),
-                              Color.fromARGB(87, 102, 255, 140),
-                              Color(0x0066FF8C),
+                              MyColors.accentGreenRadial1,
+                              MyColors.accentGreenRadial2,
+                              MyColors.accentGreenRadial3,
                             ],
                           ),
                         ),
@@ -74,7 +76,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ShaderMask(
                       shaderCallback:
                           (bounds) => LinearGradient(
-                            colors: [Color(0xFF66FF8C), Color(0x3066FF8C)],
+                            colors: [MyColors.accentGreen, MyColors.accentGreenTransparent],
                           ).createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
@@ -82,7 +84,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         "Univus",
                         style: TextStyle(
                           fontSize: 54.sp,
-                          color: Colors.white,
+                          color: MyColors.white,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -91,7 +93,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ShaderMask(
                       shaderCallback:
                           (bounds) => LinearGradient(
-                            colors: [Color(0xFFFFFFFF), Color(0x25FFFFFF)],
+                            colors: [MyColors.white, MyColors.whiteTransparent],
                           ).createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
@@ -99,7 +101,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         "Empowering Minds, Shaping Futures.",
                         style: TextStyle(
                           fontSize: 24.sp,
-                          color: Colors.white,
+                          color: MyColors.white,
                           fontWeight: FontWeight.w400,
                         ),
                       ),
@@ -116,11 +118,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                           EdgeInsets.symmetric(vertical: 18.h),
                         ),
                         backgroundColor: WidgetStatePropertyAll(
-                          Color(0xFF66FF8C),
+                          MyColors.accentGreen,
                         ),
-                        shadowColor: WidgetStatePropertyAll(Color(0x7B66FF8C)),
+                        shadowColor: WidgetStatePropertyAll(MyColors.buttonShadow),
                         foregroundColor: WidgetStatePropertyAll(
-                          Color(0xFB0A1A0E),
+                          MyColors.buttonForeground,
                         ),
                         textStyle: WidgetStatePropertyAll(
                           TextStyle(
