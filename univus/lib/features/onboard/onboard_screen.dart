@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart'
-    show SystemChrome, SystemUiOverlayStyle;
+import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../components/buttons.dart';
 import '../../utils/themes.dart';
 
 class OnboardScreen extends StatefulWidget {
@@ -76,7 +76,10 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ShaderMask(
                       shaderCallback:
                           (bounds) => LinearGradient(
-                            colors: [MyColors.accentGreen, MyColors.accentGreenTransparent],
+                            colors: [
+                              MyColors.accentGreen,
+                              MyColors.accentGreenTransparent,
+                            ],
                           ).createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
@@ -108,33 +111,11 @@ class _OnboardScreenState extends State<OnboardScreen> {
                     ),
                     SizedBox(height: 24.h),
                     // button
-                    ElevatedButton(
-                      style: ButtonStyle(
-                        elevation: WidgetStateProperty.resolveWith<double>(
-                          (states) =>
-                              states.contains(WidgetState.pressed) ? 2 : 8,
-                        ),
-                        padding: WidgetStatePropertyAll(
-                          EdgeInsets.symmetric(vertical: 18.h),
-                        ),
-                        backgroundColor: WidgetStatePropertyAll(
-                          MyColors.accentGreen,
-                        ),
-                        shadowColor: WidgetStatePropertyAll(MyColors.buttonShadow),
-                        foregroundColor: WidgetStatePropertyAll(
-                          MyColors.buttonForeground,
-                        ),
-                        textStyle: WidgetStatePropertyAll(
-                          TextStyle(
-                            fontSize: 16.sp, // Increased font size
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
-                      ),
+                    MyButtonSolid(
+                      text: "Get Started",
                       onPressed: () {
                         context.push("/login");
                       },
-                      child: Text("Get Started"),
                     ),
                   ],
                 ),
