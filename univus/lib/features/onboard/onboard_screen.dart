@@ -32,6 +32,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: MyColors.background,
+      backgroundColor: MyColors.background,
       body: Stack(
         children: [
           Positioned(
@@ -62,6 +63,9 @@ class _OnboardScreenState extends State<OnboardScreen> {
                               MyColors.accentGreenRadial1,
                               MyColors.accentGreenRadial2,
                               MyColors.accentGreenRadial3,
+                              MyColors.accentGreenRadial1,
+                              MyColors.accentGreenRadial2,
+                              MyColors.accentGreenRadial3,
                             ],
                           ),
                         ),
@@ -88,6 +92,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         style: TextStyle(
                           fontSize: 54.sp,
                           color: MyColors.white,
+                          color: MyColors.white,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
@@ -97,6 +102,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                       shaderCallback:
                           (bounds) => LinearGradient(
                             colors: [MyColors.white, MyColors.whiteTransparent],
+                            colors: [MyColors.white, MyColors.whiteTransparent],
                           ).createShader(
                             Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                           ),
@@ -104,6 +110,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
                         "Empowering Minds, Shaping Futures.",
                         style: TextStyle(
                           fontSize: 24.sp,
+                          color: MyColors.white,
                           color: MyColors.white,
                           fontWeight: FontWeight.w400,
                         ),
