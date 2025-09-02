@@ -3,6 +3,7 @@ import 'package:univus/features/login/view/login_screen.dart';
 import 'package:univus/features/onboard/onboard_screen.dart';
 
 final router = GoRouter(
+  initialLocation: "/login",
   routes: [
     GoRoute(
       path: '/',
