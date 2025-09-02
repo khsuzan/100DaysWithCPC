@@ -1,0 +1,18 @@
+import 'package:flutter/material.dart' show Color;
+
+class MyColors {
+  static const Color background = Color(0xFF171B22);
+  static const Color accentGreen = Color(0xFF66FF8C);
+  static const Color accentGreenTransparent = Color(0x3066FF8C);
+  static const Color accentGreenRadial1 = Color.fromARGB(255, 102, 255, 140);
+  static const Color accentGreenRadial2 = Color.fromARGB(87, 102, 255, 140);
+  static const Color accentGreenRadial3 = Color(0x0066FF8C);
+  static const Color buttonShadow = Color(0x7B66FF8C);
+  static const Color buttonForeground = Color(0xFB0A1A0E);
+  static const Color white = Color(0xFFFFFFFF);
+  static const Color whiteTransparent = Color(0x25FFFFFF);
+}
+
+class MySize {}
+
+class MyTypoGraphy {}
