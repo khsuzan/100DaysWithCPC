@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show SystemChrome, SystemUiMode, SystemUiOverlayStyle;
+import 'package:flutter/services.dart'
+    show SystemChrome, SystemUiMode, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:univus/routes/routes.dart';
+import 'package:univus/utils/themes.dart';
 
 class MainApp extends StatelessWidget {
   const MainApp({super.key});
@@ -15,10 +17,14 @@ class MainApp extends StatelessWidget {
       builder: (_, child) {
         return MaterialApp.router(
           debugShowCheckedModeBanner: false,
-          
           theme: ThemeData(
-            primarySwatch: Colors.blue,
+            primarySwatch: Colors.lightGreen,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+            textSelectionTheme: TextSelectionThemeData(
+              cursorColor: MyColors.accentGreen,
+              selectionColor: MyColors.whiteTransparent.withAlpha(100),
+              selectionHandleColor: MyColors.whiteTransparent.withAlpha(100),
+            ),
           ),
           routerConfig: router,
         );

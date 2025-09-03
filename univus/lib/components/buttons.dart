@@ -1,3 +1,4 @@
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -14,6 +15,14 @@ class MyButtonSolid extends StatelessWidget {
       style: ButtonStyle(
         elevation: WidgetStateProperty.resolveWith<double>(
           (states) => states.contains(WidgetState.pressed) ? 2 : 8,
+        ),
+        shape: WidgetStatePropertyAll(
+          SmoothRectangleBorder(
+            borderRadius: SmoothBorderRadius( 
+              cornerRadius: 16.w,
+              cornerSmoothing: 1,
+            ),
+          ),
         ),
         padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 18.h)),
         backgroundColor: WidgetStatePropertyAll(MyColors.accentGreen),

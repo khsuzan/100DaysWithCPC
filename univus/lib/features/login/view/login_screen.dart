@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:univus/components/buttons.dart';
+import 'package:univus/components/textfields.dart';
 
 import '../../../utils/themes.dart';
 
@@ -46,50 +47,58 @@ class _LoginScreenState extends State<LoginScreen> {
           ),
           Positioned.fill(
             child: SafeArea(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  ShaderMask(
-                    shaderCallback:
-                        (bounds) => LinearGradient(
-                          colors: [
-                            MyColors.accentGreen,
-                            MyColors.accentGreenTransparent,
-                          ],
-                        ).createShader(
-                          Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+              child: Padding(
+                padding: EdgeInsets.all(20.w),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ShaderMask(
+                      shaderCallback:
+                          (bounds) => LinearGradient(
+                            colors: [
+                              MyColors.accentGreen,
+                              MyColors.accentGreenTransparent,
+                            ],
+                          ).createShader(
+                            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
+                          ),
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                          fontSize: 42.sp,
+                          color: MyColors.white,
+                          fontWeight: FontWeight.w500,
                         ),
-                    child: Text(
-                      "Login",
-                      style: TextStyle(
-                        fontSize: 42.sp,
-                        color: MyColors.white,
-                        fontWeight: FontWeight.w500,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ),
-                  TextField(
-                    decoration: InputDecoration(
-                      labelText: "Email",
-                      labelStyle: TextStyle(color: MyColors.white),
-                      enabledBorder: OutlineInputBorder(
-                        borderSide: BorderSide(color: MyColors.accentGreen),
-                      ),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide: BorderSide(
-                          color: MyColors.accentGreen,
-                          width: 2,
-                        ),
+                        textAlign: TextAlign.center,
                       ),
                     ),
-                    style: TextStyle(color: MyColors.white),
-                  ),
-                  TextField(),
-                  SizedBox(height: 16.h),
-                  MyButtonSolid(text: "Login"),
-                ],
+                    SizedBox(height: 36.h),
+                    MyTextField(hint: "Email"),
+                    SizedBox(height: 12.h),
+                    MyTextField(hint: "Password"),
+                    SizedBox(height: 16.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [Text("Forgot password?")],
+                    ),
+                    SizedBox(height: 16.h),
+                    MyButtonSolid(text: "Login", onPressed: () {}),
+                    SizedBox(height: 36.h),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        TextButton( 5
+                          onPressed: () {},
+                          child: Text(
+                            "Register",
+                            style: TextStyle(color: MyColors.accentGreen),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
