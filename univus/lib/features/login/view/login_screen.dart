@@ -4,6 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:univus/components/buttons.dart';
 import 'package:univus/components/textfields.dart';
 
+import '../../../components/forms.dart';
 import '../../../utils/themes.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -28,10 +29,22 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  void _showForgotPasswordEmailVerifyDialog({required BuildContext context}) {
+    FocusScope.of(context).unfocus();
+    showDialog(
+      context: context,
+      builder: (context) => PhoneVerificationForm(),
+      barrierDismissible: false,
+      useSafeArea: true,
+      barrierColor: MyColors.background.withAlpha((0.3 * 255).toInt()),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF171B22),
+      backgroundColor: MyColors.background,
+      resizeToAvoidBottomInset: false,
       body: Stack(
         children: [
           Positioned(
@@ -77,18 +90,40 @@ class _LoginScreenState extends State<LoginScreen> {
                     MyTextField(hint: "Email"),
                     SizedBox(height: 12.h),
                     MyTextField(hint: "Password"),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 8.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
-                      children: [Text("Forgot password?")],
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            _showForgotPasswordEmailVerifyDialog(
+                              context: context,
+                            );
+                          },
+                          borderRadius: BorderRadius.circular(50),
+                          child: Padding(
+                            padding: EdgeInsets.all(
+                              8.w,
+                            ).copyWith(right: 0),
+                            child: Text(
+                              "Forgot password?",
+                              style: TextStyle(
+                                color: MyColors.white.withAlpha(
+                                  (0.5 * 255).toInt(),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 16.h),
+                    SizedBox(height: 8.h),
                     MyButtonSolid(text: "Login", onPressed: () {}),
-                    SizedBox(height: 36.h),
+                    SizedBox(height: 32.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton( 5
+                        TextButton(
                           onPressed: () {},
                           child: Text(
                             "Register",
