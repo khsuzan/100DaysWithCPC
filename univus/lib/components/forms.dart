@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -15,9 +18,18 @@ class PhoneVerificationForm extends StatefulWidget {
 class _PhoneVerificationFormState extends State<PhoneVerificationForm> {
   @override
   Widget build(BuildContext context) {
-    return Dialog(
-      backgroundColor: MyColors.background, 
-      insetPadding: EdgeInsets.all(16.w),
+    print(1.sw - 320.w);
+    return Dialog( 
+      backgroundColor: MyColors.backgroundLight,
+      insetPadding: EdgeInsets.all(max(16.w, (1.sw - 360.w) / 2)), 
+      shadowColor: MyColors.black.withAlpha(140),
+      elevation: 20,
+      shape: SmoothRectangleBorder(
+        borderRadius: SmoothBorderRadius(
+          cornerRadius: 16.w,
+          cornerSmoothing: 1,
+        ),
+      ),
       child: Padding(
         padding: EdgeInsets.all(20.w),
         child: Column(

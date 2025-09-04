@@ -8,9 +8,10 @@ import '../utils/themes.dart';
 
 class MyTextField extends StatelessWidget {
   final TextEditingController? controller;
+  final FocusNode? focusNode;
   final String? hint;
   final Widget? icon;
-  const MyTextField({super.key, this.controller, this.hint, this.icon});
+  const MyTextField({super.key, this.controller,this.focusNode, this.hint, this.icon});
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +42,7 @@ class MyTextField extends StatelessWidget {
       ),
       style: TextStyle(color: MyColors.accentGreen),
       controller: controller,
+      focusNode: focusNode,
     );
   }
 }

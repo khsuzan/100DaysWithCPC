@@ -15,6 +15,9 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final FocusNode _emailFocusNode = FocusNode();
+  final FocusNode _passwordFocusNode = FocusNode();
+
   @override
   void initState() {
     super.initState();
@@ -30,13 +33,14 @@ class _LoginScreenState extends State<LoginScreen> {
   }
 
   void _showForgotPasswordEmailVerifyDialog({required BuildContext context}) {
-    FocusScope.of(context).unfocus();
+    _emailFocusNode.unfocus();
+    _passwordFocusNode.unfocus();
     showDialog(
       context: context,
       builder: (context) => PhoneVerificationForm(),
       barrierDismissible: false,
       useSafeArea: true,
-      barrierColor: MyColors.background.withAlpha((0.3 * 255).toInt()),
+      barrierColor: MyColors.background.withAlpha((0.95 * 255).toInt()),
     );
   }
 
@@ -87,9 +91,12 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
                     SizedBox(height: 36.h),
-                    MyTextField(hint: "Email"),
+                    MyTextField(hint: "Email", focusNode: _emailFocusNode),
                     SizedBox(height: 12.h),
-                    MyTextField(hint: "Password"),
+                    MyTextField(
+                      hint: "Password",
+                      focusNode: _passwordFocusNode,
+                    ),
                     SizedBox(height: 8.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.end,
@@ -102,9 +109,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           },
                           borderRadius: BorderRadius.circular(50),
                           child: Padding(
-                            padding: EdgeInsets.all(
-                              8.w,
-                            ).copyWith(right: 0),
+                            padding: EdgeInsets.all(8.w).copyWith(right: 0),
                             child: Text(
                               "Forgot password?",
                               style: TextStyle(
