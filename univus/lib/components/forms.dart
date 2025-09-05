@@ -48,7 +48,7 @@ class _PhoneVerificationFormState extends State<PhoneVerificationForm> {
                     Rect.fromLTWH(0, 0, bounds.width, bounds.height),
                   ),
               child: Text(
-                "Verify Mobile Number",
+                "Verify Email",
                 style: TextStyle(
                   fontSize: 42.sp,
                   color: MyColors.white,
