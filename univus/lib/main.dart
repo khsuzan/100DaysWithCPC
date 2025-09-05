@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart'
-    show SystemChrome, SystemUiMode, SystemUiOverlayStyle;
+    show DeviceOrientation, SystemChrome, SystemUiMode, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:univus/routes/routes.dart';
 import 'package:univus/utils/themes.dart';
@@ -39,13 +39,15 @@ void main() async {
   SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
   SystemChrome.setSystemUIOverlayStyle(
     SystemUiOverlayStyle(
-      systemNavigationBarColor: Colors.transparent, // Change as needed
+      systemNavigationBarColor: Colors.transparent,
+      statusBarColor: Colors.transparent,
       systemNavigationBarContrastEnforced: false,
-      statusBarColor: Colors.transparent, // Change as needed
-      systemNavigationBarIconBrightness: Brightness.light,
+      systemStatusBarContrastEnforced: false,
+      systemNavigationBarIconBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.light,
     ),
   );
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
 
   runApp(const MainApp());
 }

@@ -1,4 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sliver_tools/sliver_tools.dart';
+
+import '../../../utils/themes.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -10,6 +15,244 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      backgroundColor: MyColors.background,
+      resizeToAvoidBottomInset: false,
+      body: SafeArea(
+        child: CustomScrollView(slivers: [_headerBar(), _upComingClasses()]),
+      ),
+      bottomNavigationBar: _bottomNavigationBar(),
+    );
+  }
+
+  PinnedHeaderSliver _headerBar() {
+    return PinnedHeaderSliver(
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          ClipOval(
+            child: Container(
+              height: 60,
+              width: 60,
+              color: MyColors.accentGreen.withAlpha(50),
+              child: Image.asset("assets/images/robo.png"),
+            ),
+          ),
+          SizedBox(width: 8.w),
+          Expanded(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                Text("Welcome back,", style: TextStyle(fontSize: 14.sp)),
+                Text(
+                  "Kawsar",
+                  style: TextStyle(
+                    fontSize: 20.sp,
+                    fontWeight: FontWeight.w500,
+                    color: MyColors.accentGreen,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          InkWell(
+            onTap: () {},
+            borderRadius: BorderRadius.circular(50),
+            highlightColor: MyColors.accentGreen.withAlpha(50),
+            splashColor: MyColors.accentGreen.withAlpha(50),
+            child: Padding(
+              padding: EdgeInsets.all(12.w),
+              child: SvgPicture.asset(
+                "assets/icons/bell_dot.svg",
+                height: 24.h,
+                width: 24.h,
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  MultiSliver _upComingClasses() {
+    return MultiSliver(
+      children: [
+        SliverToBoxAdapter(child: Text("Upcoming classes")),
+        SliverList(
+          delegate: SliverChildListDelegate.fixed(
+            List.generate(5, (index) {
+              return _upComingClass();
+            }),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _upComingClass() {
+    return Padding(
+      padding: EdgeInsets.symmetric(vertical: 6.h),
+      child: Container(
+        padding: EdgeInsets.all(6.h),
+        color: MyColors.backgroundLight,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              height: 50,
+              width: 50,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                color: MyColors.accentGreen.withAlpha(50),
+                borderRadius: BorderRadius.circular(8.w),
+              ),
+              child: Image.asset("assets/images/robo.png"),
+            ),
+            SizedBox(width: 8.w),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    "Chemistry",
+                    style: TextStyle(
+                      fontSize: 20.sp,
+                      fontWeight: FontWeight.w500,
+                      color: MyColors.accentGreen,
+                    ),
+                  ),
+                  SizedBox(height: 6.h),
+                  Text("6:00PM - 7:40PM", style: TextStyle(fontSize: 14.sp)),
+                ],
+              ),
+            ),
+            Text("Room 502", style: TextStyle(fontSize: 14.sp)),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomNavigationBar() {
+    return SafeArea(
+      top: false,
+      child: Container(
+        decoration: BoxDecoration(
+          color: MyColors.background,
+          border: Border(
+            top: BorderSide(color: MyColors.accentGreen.withAlpha(10)),
+          ),
+        ),
+        height: kBottomNavigationBarHeight + 10.h,
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            Expanded(
+              child: _bottomNavigationItem(
+                selected: true,
+                name: "Dashboard",
+                selectedSvgPath: "assets/icons/home_selected.svg",
+                unSelectSvgPath: "assets/icons/home.svg",
+                onTap: () {},
+              ),
+            ),
+            Expanded(
+              child: _bottomNavigationItem(
+                selected: false,
+                name: "Routine",
+                selectedSvgPath: "assets/icons/mortarboard_selected.svg",
+                unSelectSvgPath: "assets/icons/mortarboard.svg",
+                onTap: () {},
+              ),
+            ),
+            Expanded(
+              child: _bottomNavigationItem(
+                selected: false,
+                name: "Coarses",
+                selectedSvgPath: "assets/icons/list_tree.svg",
+                unSelectSvgPath: "assets/icons/list_tree.svg",
+                onTap: () {},
+              ),
+            ),
+            Expanded(
+              child: _bottomNavigationItem(
+                selected: false,
+                name: "Fees",
+                selectedSvgPath: "assets/icons/fees_selected.svg",
+                unSelectSvgPath: "assets/icons/fees.svg",
+                onTap: () {},
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _bottomNavigationItem({
+    required bool selected,
+    required String name,
+    required String unSelectSvgPath,
+    required String selectedSvgPath,
+    required Function() onTap,
+  }) {
+    return InkWell(
+      onTap: onTap,
+      highlightColor: MyColors.accentGreen.withAlpha(50),
+      splashColor: MyColors.accentGreen.withAlpha(50),
+      child: ShaderMask(
+        shaderCallback: (bounds) {
+          if (selected) {
+            // Solid color shader for selected
+            return LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [MyColors.accentGreen, MyColors.accentGreenTransparent],
+            ).createShader(
+              Rect.fromLTWH(0, 0, bounds.width, bounds.height + 20),
+            );
+          } else {
+            // Gradient for unselected
+            return LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [MyColors.white, MyColors.whiteTransparent],
+            ).createShader(
+              Rect.fromLTWH(0, 0, bounds.width, bounds.height + 20),
+            );
+          }
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            SvgPicture.asset(
+              selected ? selectedSvgPath : unSelectSvgPath,
+              height: 24.h,
+              colorFilter: ColorFilter.mode(
+                selected
+                    ? MyColors.accentGreen
+                    : const Color(0xFFA3A3A3).withAlpha(180),
+                BlendMode.srcIn,
+              ),
+            ),
+            SizedBox(height: 2.h),
+            Text(
+              name,
+              style: TextStyle(
+                fontWeight: FontWeight.w500,
+                fontSize: 14.sp,
+                color:
+                    selected
+                        ? MyColors.accentGreen
+                        : const Color(0xFFA3A3A3).withAlpha(180),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }
