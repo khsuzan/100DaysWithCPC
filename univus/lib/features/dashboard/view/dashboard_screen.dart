@@ -19,58 +19,84 @@ class _DashboardScreenState extends State<DashboardScreen> {
       backgroundColor: MyColors.background,
       resizeToAvoidBottomInset: false,
       body: SafeArea(
-        child: CustomScrollView(slivers: [_headerBar(), _upComingClasses()]),
+        child: CustomScrollView(
+          slivers: [
+            _headerBar(),
+            _gap(20.h),
+            _upComingClasses(),
+            // _gap(20.h),
+            // _upComingClasses(),
+          ],
+        ),
       ),
       bottomNavigationBar: _bottomNavigationBar(),
     );
   }
 
+  SliverToBoxAdapter _gap(double gap) {
+    return SliverToBoxAdapter(child: SizedBox(height: gap));
+  }
+
   PinnedHeaderSliver _headerBar() {
     return PinnedHeaderSliver(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          ClipOval(
-            child: Container(
-              height: 60,
-              width: 60,
-              color: MyColors.accentGreen.withAlpha(50),
-              child: Image.asset("assets/images/robo.png"),
-            ),
+      child: Container(
+        decoration: BoxDecoration(
+          color: MyColors.background,
+          border: Border(
+            bottom: BorderSide(color: MyColors.accentGreen.withAlpha(10)),
           ),
-          SizedBox(width: 8.w),
-          Expanded(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                Text("Welcome back,", style: TextStyle(fontSize: 14.sp)),
-                Text(
-                  "Kawsar",
-                  style: TextStyle(
-                    fontSize: 20.sp,
-                    fontWeight: FontWeight.w500,
-                    color: MyColors.accentGreen,
-                  ),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Padding(
+              padding: EdgeInsets.all(6.h),
+              child: ClipOval(
+                child: Container(
+                  height: 48.h,
+                  width: 48.h,
+                  color: MyColors.accentGreen.withAlpha(50),
+                  child: Image.asset("assets/images/robo.png"),
                 ),
-              ],
-            ),
-          ),
-          InkWell(
-            onTap: () {},
-            borderRadius: BorderRadius.circular(50),
-            highlightColor: MyColors.accentGreen.withAlpha(50),
-            splashColor: MyColors.accentGreen.withAlpha(50),
-            child: Padding(
-              padding: EdgeInsets.all(12.w),
-              child: SvgPicture.asset(
-                "assets/icons/bell_dot.svg",
-                height: 24.h,
-                width: 24.h,
               ),
             ),
-          ),
-        ],
+            SizedBox(width: 8.w),
+            Expanded(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    "Welcome back,",
+                    style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+                  ),
+                  Text(
+                    "Kawsar",
+                    style: TextStyle(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w500,
+                      color: MyColors.accentGreen,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            InkWell(
+              onTap: () {},
+              borderRadius: BorderRadius.circular(50),
+              highlightColor: MyColors.accentGreen.withAlpha(50),
+              splashColor: MyColors.accentGreen.withAlpha(50),
+              child: Padding(
+                padding: EdgeInsets.all(12.w),
+                child: SvgPicture.asset(
+                  "assets/icons/bell_dot.svg",
+                  height: 24.h,
+                  width: 24.h,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -78,7 +104,16 @@ class _DashboardScreenState extends State<DashboardScreen> {
   MultiSliver _upComingClasses() {
     return MultiSliver(
       children: [
-        SliverToBoxAdapter(child: Text("Upcoming classes")),
+        SliverToBoxAdapter(
+          child: Text("Upcoming classes", style: TextStyle(fontSize: 18.sp)),
+        ),
+        _gap(4.h),
+        SliverToBoxAdapter(
+          child: Text(
+            "06-Sep-25",
+            style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+          ),
+        ),
         SliverList(
           delegate: SliverChildListDelegate.fixed(
             List.generate(5, (index) {
@@ -92,7 +127,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
 
   Widget _upComingClass() {
     return Padding(
-      padding: EdgeInsets.symmetric(vertical: 6.h),
+      padding: EdgeInsets.symmetric(vertical: 4.h),
       child: Container(
         padding: EdgeInsets.all(6.h),
         color: MyColors.backgroundLight,
@@ -109,7 +144,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
               child: Image.asset("assets/images/robo.png"),
             ),
-            SizedBox(width: 8.w),
+            SizedBox(width: 6.w),
             Expanded(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -118,22 +153,55 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   Text(
                     "Chemistry",
                     style: TextStyle(
-                      fontSize: 20.sp,
+                      fontSize: 16.sp,
                       fontWeight: FontWeight.w500,
                       color: MyColors.accentGreen,
                     ),
                   ),
-                  SizedBox(height: 6.h),
-                  Text("6:00PM - 7:40PM", style: TextStyle(fontSize: 14.sp)),
+                  SizedBox(height: 4.h),
+                  Text(
+                    "6:00PM - 7:40PM",
+                    style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+                  ),
                 ],
               ),
             ),
-            Text("Room 502", style: TextStyle(fontSize: 14.sp)),
+            Text(
+              "Room 502",
+              style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+            ),
           ],
         ),
       ),
     );
   }
+
+
+
+  MultiSliver _announces() {
+    return MultiSliver(
+      children: [
+        SliverToBoxAdapter(
+          child: Text("Upcoming classes", style: TextStyle(fontSize: 18.sp)),
+        ),
+        _gap(4.h),
+        SliverToBoxAdapter(
+          child: Text(
+            "06-Sep-25",
+            style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+          ),
+        ),
+        SliverList(
+          delegate: SliverChildListDelegate.fixed(
+            List.generate(5, (index) {
+              return _upComingClass();
+            }),
+          ),
+        ),
+      ],
+    );
+  }
+
 
   Widget _bottomNavigationBar() {
     return SafeArea(

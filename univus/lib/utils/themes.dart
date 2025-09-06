@@ -11,6 +11,7 @@ class MyColors {
   static const Color buttonShadow = Color(0x7B66FF8C);
   static const Color buttonForeground = Color(0xFB0A1A0E);
   static const Color white = Color(0xFFFFFFFF);
+  static const Color gray = Color(0xFF8F8F8F);
   static const Color whiteTransparent = Color(0x25FFFFFF);
   static const Color black = Color(0xFF000000); 
 }
