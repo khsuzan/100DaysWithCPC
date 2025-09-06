@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:persistent_header_adaptive/persistent_header_adaptive.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../utils/themes.dart';
@@ -37,8 +38,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return SliverToBoxAdapter(child: SizedBox(height: gap));
   }
 
-  PinnedHeaderSliver _headerBar() {
-    return PinnedHeaderSliver(
+  AdaptiveHeightSliverPersistentHeader _headerBar() {
+    return AdaptiveHeightSliverPersistentHeader(
+      floating: true,
+      needRepaint: true,
       child: Container(
         decoration: BoxDecoration(
           color: MyColors.background,
@@ -187,7 +190,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               Spacer(),
               InkWell(
                 onTap: () {},
-                borderRadius: BorderRadius.circular(50.h), 
+                borderRadius: BorderRadius.circular(50.h),
                 child: Padding(
                   padding: EdgeInsets.only(top: 4.h, bottom: 4.h, left: 4.h),
                   child: Text(
