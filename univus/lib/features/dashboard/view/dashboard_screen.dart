@@ -5,6 +5,7 @@ import 'package:persistent_header_adaptive/persistent_header_adaptive.dart';
 import 'package:sliver_tools/sliver_tools.dart';
 
 import '../../../utils/themes.dart';
+import '../../../utils/widgets.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -108,13 +109,28 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return MultiSliver(
       children: [
         SliverToBoxAdapter(
-          child: Text("Upcoming classes", style: TextStyle(fontSize: 18.sp)),
+          child: DefaultHorizontalScreenPadding(
+            child: Text("Upcoming classes", style: TextStyle(fontSize: 18.sp)),
+          ),
         ),
         _gap(4.h),
         SliverToBoxAdapter(
-          child: Text(
-            "06-Sep-25",
-            style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+          child: DefaultHorizontalScreenPadding(
+            child: Row(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    color: MyColors.accentGreen,
+                    borderRadius: BorderRadius.circular(4.r),
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.w),
+                  child: Text(
+                    "06-Sep-25",
+                    style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                  ),
+                ),
+              ],
+            ),
           ),
         ),
         SliverList(
@@ -131,49 +147,58 @@ class _DashboardScreenState extends State<DashboardScreen> {
   Widget _upComingClass() {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.h),
-      child: Container(
-        padding: EdgeInsets.all(6.h),
-        color: MyColors.backgroundLight,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: MyColors.accentGreen.withAlpha(50),
-                borderRadius: BorderRadius.circular(8.w),
-              ),
-              child: Image.asset("assets/images/robo.png"),
-            ),
-            SizedBox(width: 6.w),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    "Chemistry",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: MyColors.accentGreen,
-                    ),
+      child: InkWell(
+        onTap: () {
+          print("sdf"); 
+        },
+        highlightColor: MyColors.accentGreen.withAlpha(50),
+        splashColor: MyColors.accentGreen.withAlpha(50),
+        child: Container(
+          padding: EdgeInsets.symmetric(vertical: 8.h),
+          color: MyColors.backgroundLight,
+          child: DefaultHorizontalScreenPadding(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  height: 50,
+                  width: 50,
+                  clipBehavior: Clip.antiAlias,
+                  decoration: BoxDecoration(
+                    color: MyColors.accentGreen.withAlpha(50),
+                    borderRadius: BorderRadius.circular(8.w),
                   ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    "6:00PM - 7:40PM",
-                    style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+                  child: Image.asset("assets/images/robo.png"),
+                ),
+                SizedBox(width: 6.w),
+                Expanded(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.stretch,
+                    children: [
+                      Text(
+                        "Chemistry",
+                        style: TextStyle(
+                          fontSize: 16.sp,
+                          fontWeight: FontWeight.w500,
+                          color: MyColors.accentGreen,
+                        ),
+                      ),
+                      SizedBox(height: 4.h),
+                      Text(
+                        "6:00PM - 7:40PM",
+                        style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                ),
+                Text(
+                  "Room 502",
+                  style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+                ),
+              ],
             ),
-            Text(
-              "Room 502",
-              style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
-            ),
-          ],
+          ),
         ),
       ),
     );
@@ -183,23 +208,32 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return MultiSliver(
       children: [
         SliverToBoxAdapter(
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Text("Announces", style: TextStyle(fontSize: 18.sp)),
-              Spacer(),
-              InkWell(
-                onTap: () {},
-                borderRadius: BorderRadius.circular(50.h),
-                child: Padding(
-                  padding: EdgeInsets.only(top: 4.h, bottom: 4.h, left: 4.h),
-                  child: Text(
-                    "Show All",
-                    style: TextStyle(fontSize: 13.sp, color: MyColors.gray),
+          child: DefaultHorizontalScreenPadding(
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text("Announces", style: TextStyle(fontSize: 18.sp)),
+                Spacer(),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(50.h),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: MyColors.accentGreen,
+                      borderRadius: BorderRadius.circular(6.r),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 6.w,
+                      vertical: 4.w,
+                    ),
+                    child: Text(
+                      "Show All",
+                      style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
         _gap(4.h),
@@ -218,53 +252,55 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.h),
       child: Container(
-        padding: EdgeInsets.all(6.h),
+        padding: EdgeInsets.symmetric(vertical: 8.h),
         color: MyColors.backgroundLight,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              height: 50,
-              width: 50,
-              clipBehavior: Clip.antiAlias,
-              decoration: BoxDecoration(
-                color: MyColors.accentGreen.withAlpha(50),
-                borderRadius: BorderRadius.circular(8.w),
+        child: DefaultHorizontalScreenPadding(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                height: 50,
+                width: 50,
+                clipBehavior: Clip.antiAlias,
+                decoration: BoxDecoration(
+                  color: MyColors.accentGreen.withAlpha(50),
+                  borderRadius: BorderRadius.circular(8.w),
+                ),
+                child: Image.asset("assets/images/robo.png"),
               ),
-              child: Image.asset("assets/images/robo.png"),
-            ),
-            SizedBox(width: 6.w),
-            Expanded(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.stretch,
-                children: [
-                  Text(
-                    "Campuse cloasure notice",
-                    style: TextStyle(
-                      fontSize: 16.sp,
-                      fontWeight: FontWeight.w500,
-                      color: MyColors.accentGreen,
+              SizedBox(width: 6.w),
+              Expanded(
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    Text(
+                      "Campuse cloasure notice",
+                      style: TextStyle(
+                        fontSize: 16.sp,
+                        fontWeight: FontWeight.w500,
+                        color: MyColors.accentGreen,
+                      ),
                     ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text.rich(
-                    TextSpan(
-                      text:
-                          "Due to inclement weather, the campus will remain close on monday 23th October...",
-                      children: [
-                        TextSpan(
-                          text: "Read More",
-                          style: TextStyle(color: MyColors.accentGreen),
-                        ),
-                      ],
-                      style: TextStyle(color: MyColors.gray),
+                    SizedBox(height: 4.h),
+                    Text.rich(
+                      TextSpan(
+                        text:
+                            "Due to inclement weather, the campus will remain close on monday 23th October ...",
+                        children: [
+                          TextSpan(
+                            text: "Read More",
+                            style: TextStyle(color: MyColors.accentGreen),
+                          ),
+                        ],
+                        style: TextStyle(color: MyColors.gray),
+                      ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
