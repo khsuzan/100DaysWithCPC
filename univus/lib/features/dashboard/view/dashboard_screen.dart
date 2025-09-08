@@ -1,3 +1,4 @@
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -31,7 +32,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
           ],
         ),
       ),
-      bottomNavigationBar: _bottomNavigationBar(),
     );
   }
 
@@ -110,23 +110,35 @@ class _DashboardScreenState extends State<DashboardScreen> {
       children: [
         SliverToBoxAdapter(
           child: DefaultHorizontalScreenPadding(
-            child: Text("Upcoming classes", style: TextStyle(fontSize: 18.sp)),
-          ),
-        ),
-        _gap(4.h),
-        SliverToBoxAdapter(
-          child: DefaultHorizontalScreenPadding(
             child: Row(
               children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: MyColors.accentGreen,
-                    borderRadius: BorderRadius.circular(4.r),
+                Text(
+                  "Upcoming classes".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
                   ),
-                  padding: EdgeInsets.symmetric(horizontal: 6.w, vertical: 1.w),
-                  child: Text(
-                    "06-Sep-25",
-                    style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                ),
+                Spacer(),
+                InkWell(
+                  onTap: () {},
+                  borderRadius: BorderRadius.circular(50.h),
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: MyColors.accentGreen,
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 8.r,
+                        cornerSmoothing: 1.0,
+                      ),
+                    ),
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 6.w,
+                      vertical: 4.w,
+                    ),
+                    child: Text(
+                      "6-Sep-2025",
+                      style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                    ),
                   ),
                 ),
               ],
@@ -148,9 +160,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
     return Padding(
       padding: EdgeInsets.symmetric(vertical: 4.h),
       child: InkWell(
-        onTap: () {
-          print("sdf"); 
-        },
+        onTap: () {},
         highlightColor: MyColors.accentGreen.withAlpha(50),
         splashColor: MyColors.accentGreen.withAlpha(50),
         child: Container(
@@ -212,7 +222,13 @@ class _DashboardScreenState extends State<DashboardScreen> {
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Text("Announces", style: TextStyle(fontSize: 18.sp)),
+                Text(
+                  "Announces".toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 16.sp,
+                    fontWeight: FontWeight.w700,
+                  ),
+                ),
                 Spacer(),
                 InkWell(
                   onTap: () {},
@@ -220,7 +236,10 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: MyColors.accentGreen,
-                      borderRadius: BorderRadius.circular(6.r),
+                      borderRadius: SmoothBorderRadius(
+                        cornerRadius: 8.r,
+                        cornerSmoothing: 1.0,
+                      ),
                     ),
                     padding: EdgeInsets.symmetric(
                       horizontal: 6.w,
@@ -301,127 +320,6 @@ class _DashboardScreenState extends State<DashboardScreen> {
               ),
             ],
           ),
-        ),
-      ),
-    );
-  }
-
-  Widget _bottomNavigationBar() {
-    return SafeArea(
-      top: false,
-      child: Container(
-        decoration: BoxDecoration(
-          color: MyColors.background,
-          border: Border(
-            top: BorderSide(color: MyColors.accentGreen.withAlpha(10)),
-          ),
-        ),
-        height: kBottomNavigationBarHeight + 10.h,
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: _bottomNavigationItem(
-                selected: true,
-                name: "Dashboard",
-                selectedSvgPath: "assets/icons/home_selected.svg",
-                unSelectSvgPath: "assets/icons/home.svg",
-                onTap: () {},
-              ),
-            ),
-            Expanded(
-              child: _bottomNavigationItem(
-                selected: false,
-                name: "Routine",
-                selectedSvgPath: "assets/icons/mortarboard_selected.svg",
-                unSelectSvgPath: "assets/icons/mortarboard.svg",
-                onTap: () {},
-              ),
-            ),
-            Expanded(
-              child: _bottomNavigationItem(
-                selected: false,
-                name: "Coarses",
-                selectedSvgPath: "assets/icons/list_tree.svg",
-                unSelectSvgPath: "assets/icons/list_tree.svg",
-                onTap: () {},
-              ),
-            ),
-            Expanded(
-              child: _bottomNavigationItem(
-                selected: false,
-                name: "Fees",
-                selectedSvgPath: "assets/icons/fees_selected.svg",
-                unSelectSvgPath: "assets/icons/fees.svg",
-                onTap: () {},
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _bottomNavigationItem({
-    required bool selected,
-    required String name,
-    required String unSelectSvgPath,
-    required String selectedSvgPath,
-    required Function() onTap,
-  }) {
-    return InkWell(
-      onTap: onTap,
-      highlightColor: MyColors.accentGreen.withAlpha(50),
-      splashColor: MyColors.accentGreen.withAlpha(50),
-      child: ShaderMask(
-        shaderCallback: (bounds) {
-          if (selected) {
-            // Solid color shader for selected
-            return LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [MyColors.accentGreen, MyColors.accentGreenTransparent],
-            ).createShader(
-              Rect.fromLTWH(0, 0, bounds.width, bounds.height + 20),
-            );
-          } else {
-            // Gradient for unselected
-            return LinearGradient(
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-              colors: [MyColors.white, MyColors.whiteTransparent],
-            ).createShader(
-              Rect.fromLTWH(0, 0, bounds.width, bounds.height + 20),
-            );
-          }
-        },
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SvgPicture.asset(
-              selected ? selectedSvgPath : unSelectSvgPath,
-              height: 24.h,
-              colorFilter: ColorFilter.mode(
-                selected
-                    ? MyColors.accentGreen
-                    : const Color(0xFFA3A3A3).withAlpha(180),
-                BlendMode.srcIn,
-              ),
-            ),
-            SizedBox(height: 2.h),
-            Text(
-              name,
-              style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 14.sp,
-                color:
-                    selected
-                        ? MyColors.accentGreen
-                        : const Color(0xFFA3A3A3).withAlpha(180),
-              ),
-            ),
-          ],
         ),
       ),
     );
