@@ -4,6 +4,7 @@ class MyColors {
   static const Color background = Color(0xFF171B22); 
   static const Color backgroundLight = Color(0xFF1A1E25); 
   static const Color accentGreen = Color(0xFF51CA70); // 0xFF66FF8C
+  static const Color accentGreenDark =Color(0xFF1E4E2A); // 0xFF66FF8C 
   static const Color accentGreenTransparent = Color(0x3066FF8C);
   static const Color accentGreenRadial1 = Color(0xFF66FF8C);
   static const Color accentGreenRadial2 = Color(0x5666FF8C); 

@@ -7,7 +7,7 @@ import '../components/shell.dart';
 import '../features/routine/view/routine_screen.dart';
 
 final router = GoRouter(
-  initialLocation: "/dashboard",
+  initialLocation: "/routine",
   routes: [
     GoRoute(path: '/', builder: (context, state) => OnboardScreen()),
     GoRoute(path: '/login', builder: (context, state) => LoginScreen()),
