@@ -1,4 +1,5 @@
 import 'package:go_router/go_router.dart';
+import 'package:univus/features/courses/view/courses_screen.dart';
 import 'package:univus/features/dashboard/view/dashboard_screen.dart';
 import 'package:univus/features/login/view/login_screen.dart';
 import 'package:univus/features/onboard/onboard_screen.dart';
@@ -32,7 +33,7 @@ final router = GoRouter(
           path: '/courses',
           name: 'courses',
           pageBuilder:
-              (context, state) => NoTransitionPage(child: DashboardScreen()),
+              (context, state) => NoTransitionPage(child: CoursesScreen()),
         ),
         GoRoute(
           path: '/fees',
