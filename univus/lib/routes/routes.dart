@@ -4,6 +4,7 @@ import 'package:univus/features/login/view/login_screen.dart';
 import 'package:univus/features/onboard/onboard_screen.dart';
 
 import '../components/shell.dart';
+import '../features/routine/view/routine_screen.dart';
 
 final router = GoRouter(
   initialLocation: "/dashboard",
@@ -25,7 +26,7 @@ final router = GoRouter(
           path: '/routine',
           name: 'routine',
           pageBuilder:
-              (context, state) => NoTransitionPage(child: DashboardScreen()),
+              (context, state) => NoTransitionPage(child: RoutineScreen()),
         ),
         GoRoute(
           path: '/courses',
