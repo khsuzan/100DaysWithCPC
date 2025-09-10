@@ -5,10 +5,11 @@ import 'package:univus/features/login/view/login_screen.dart';
 import 'package:univus/features/onboard/onboard_screen.dart';
 
 import '../components/shell.dart';
+import '../features/profile/view/profile_screen.dart';
 import '../features/routine/view/routine_screen.dart';
 
 final router = GoRouter(
-  initialLocation: "/routine",
+  initialLocation: "/",
   routes: [
     GoRoute(path: '/', builder: (context, state) => OnboardScreen()),
     GoRoute(path: '/login', builder: (context, state) => LoginScreen()),
@@ -36,10 +37,10 @@ final router = GoRouter(
               (context, state) => NoTransitionPage(child: CoursesScreen()),
         ),
         GoRoute(
-          path: '/fees',
-          name: 'fees',
+          path: '/profile',
+          name: 'profile',
           pageBuilder:
-              (context, state) => NoTransitionPage(child: DashboardScreen()),
+              (context, state) => NoTransitionPage(child: ProfileScreen()),
         ),
       ],
     ),

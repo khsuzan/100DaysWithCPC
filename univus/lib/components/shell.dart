@@ -27,7 +27,7 @@ class DashboardShell extends StatelessWidget {
           context.push('/courses');
         },
         goToFees: () {
-          context.push('/fees');
+          context.push('/profile');
         },
       ),
     );
@@ -38,7 +38,7 @@ class DashboardShell extends StatelessWidget {
     if (location.startsWith('/dashboard')) return 0;
     if (location.startsWith('/routine')) return 1;
     if (location.startsWith('/courses')) return 2;
-    if (location.startsWith('/fees')) return 3;
+    if (location.startsWith('/profile')) return 3;
     return 0;
   }
 
@@ -104,9 +104,9 @@ class DashboardShell extends StatelessWidget {
             Expanded(
               child: _bottomNavigationItem(
                 selected:  _calculateSelectedIndex(context) == 3,
-                name: "Fees",
-                selectedSvgPath: "assets/icons/fees_selected.svg",
-                unSelectSvgPath: "assets/icons/fees.svg",
+                name: "Account",
+                selectedSvgPath: "assets/icons/profile_selected.svg",
+                unSelectSvgPath: "assets/icons/profile.svg",
                 onTap: () {
                   if (_calculateSelectedIndex(context) != 3) {
                     goToFees();

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:univus/components/buttons.dart';
 import 'package:univus/components/textfields.dart';
 
@@ -123,7 +124,9 @@ class _LoginScreenState extends State<LoginScreen> {
                       ],
                     ),
                     SizedBox(height: 8.h),
-                    MyButtonSolid(text: "Login", onPressed: () {}),
+                    MyButtonSolid(text: "Login", onPressed: () {
+                      context.push("/dashboard");
+                    }),
                     SizedBox(height: 32.h),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
