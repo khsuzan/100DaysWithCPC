@@ -91,7 +91,7 @@ class DashboardShell extends StatelessWidget {
             Expanded(
               child: _bottomNavigationItem(
                 selected:  _calculateSelectedIndex(context) == 2,
-                name: "Coarses",
+                name: "Courses",
                 selectedSvgPath: "assets/icons/list_tree.svg",
                 unSelectSvgPath: "assets/icons/list_tree.svg",
                 onTap: () {
