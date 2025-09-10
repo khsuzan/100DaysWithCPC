@@ -1,4 +1,4 @@
-## Univus
+## [Univus](univus/)
 **Empowering Minds, Shaping Futures**
 
 Univus is a modern educational companion app designed to streamline your academic journey. From onboarding to course management, Univus provides a seamless experience for students to access routines, courses, and dashboards—all in one place.
