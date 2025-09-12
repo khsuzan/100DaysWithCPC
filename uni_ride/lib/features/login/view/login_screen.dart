@@ -1,144 +1,196 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart' show SystemChrome, SystemUiOverlayStyle;
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
-import '../../../components/buttons.dart';
-import '../../../components/forms.dart';
-import '../../../components/textfields.dart';
-import '../../../utils/themes.dart';
+import 'package:flutter/material.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+  const LoginScreen({Key? key}) : super(key: key);
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-  final FocusNode _emailFocusNode = FocusNode();
-  final FocusNode _passwordFocusNode = FocusNode();
-
-  @override
-  void initState() {
-    super.initState();
-    SystemChrome.setSystemUIOverlayStyle(
-      SystemUiOverlayStyle(
-        systemNavigationBarColor: Colors.transparent, // Change as needed
-        systemNavigationBarContrastEnforced: false,
-        statusBarColor: Colors.transparent, // Change as needed
-        systemNavigationBarIconBrightness: Brightness.light,
-        statusBarIconBrightness: Brightness.light,
-      ),
-    );
-  }
-
-  void _showForgotPasswordEmailVerifyDialog({required BuildContext context}) {
-    _emailFocusNode.unfocus();
-    _passwordFocusNode.unfocus();
-    showDialog(
-      context: context,
-      builder: (context) => PhoneVerificationForm(),
-      barrierDismissible: false,
-      useSafeArea: true,
-      barrierColor: MyColors.background.withAlpha((0.95 * 255).toInt()),
-    );
-  }
+  bool showPassword = false;
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: MyColors.background,
-      resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: [
-          Positioned(
-            bottom: 0,
-            left: 0,
-            right: 0,
-            child: Image.asset(
-              "assets/images/university.png",
-              opacity: AlwaysStoppedAnimation(0.1),
-              fit: BoxFit.cover,
-              height: 0.4.sh,
+      backgroundColor: Colors.white,
+      body: SafeArea(
+        child: Column(
+          children: [
+            // Status Bar Simulation
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(5, (i) =>
+                Container(
+                  margin: const EdgeInsets.symmetric(horizontal: 2),
+                  width: 8,
+                  height: 8,
+                  decoration: BoxDecoration(
+                    color: i == 2 ? Colors.black : Colors.black.withOpacity(0.4),
+                    shape: BoxShape.circle,
+                  ),
+                ),
+              ),
             ),
-          ),
-          Positioned.fill(
-            child: SafeArea(
+            // Main Content
+            Expanded(
               child: Padding(
-                padding: EdgeInsets.all(20.w),
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    ShaderMask(
-                      shaderCallback:
-                          (bounds) => LinearGradient(
-                            colors: [
-                              MyColors.accentGreen,
-                              MyColors.accentGreenTransparent,
-                            ],
-                          ).createShader(
-                            Rect.fromLTWH(0, 0, bounds.width, bounds.height),
-                          ),
-                      child: Text(
-                        "Login",
-                        style: TextStyle(
-                          fontSize: 42.sp,
-                          color: MyColors.white,
-                          fontWeight: FontWeight.w500,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    SizedBox(height: 36.h),
-                    MyTextField(hint: "Email", focusNode: _emailFocusNode),
-                    SizedBox(height: 12.h),
-                    MyTextField(
-                      hint: "Password",
-                      focusNode: _passwordFocusNode,
-                    ),
-                    SizedBox(height: 8.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.end,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            _showForgotPasswordEmailVerifyDialog(
-                              context: context,
-                            );
-                          },
-                          borderRadius: BorderRadius.circular(50),
-                          child: Padding(
-                            padding: EdgeInsets.all(8.w).copyWith(right: 0),
-                            child: Text(
-                              "Forgot password?",
-                              style: TextStyle(
-                                color: MyColors.white.withAlpha(
-                                  (0.5 * 255).toInt(),
-                                ),
-                              ),
+                    // Header Section
+                    Expanded(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          // App Icon
+                          Container(
+                            width: 96,
+                            height: 96,
+                            decoration: BoxDecoration(
+                              color: Colors.black,
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                            child: const Center(
+                              child: Icon(Icons.directions_bus, color: Colors.white, size: 48),
                             ),
                           ),
-                        ),
-                      ],
+                          const SizedBox(height: 32),
+                          // Title & Subtitle
+                          const Text(
+                            'Campus Transit',
+                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black),
+                          ),
+                          const SizedBox(height: 12),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 16),
+                            child: Text(
+                              'Track your campus buses in real-time and never miss a ride',
+                              style: TextStyle(fontSize: 16, color: Colors.grey),
+                              textAlign: TextAlign.center,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    SizedBox(height: 8.h),
-                    MyButtonSolid(
-                      text: "Login",
-                      onPressed: () {
-                        context.push("/dashboard");
-                      },
-                    ),
-                    SizedBox(height: 32.h),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
+                    // Login Form
+                    Column(
                       children: [
-                        TextButton(
-                          onPressed: () {},
-                          child: Text(
-                            "Register",
-                            style: TextStyle(color: MyColors.accentGreen),
+                        // Email
+                        TextField(
+                          controller: emailController,
+                          keyboardType: TextInputType.emailAddress,
+                          decoration: InputDecoration(
+                            hintText: 'Email address',
+                            filled: true,
+                            fillColor: Colors.grey[50],
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.grey[200]!),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(20),
+                              borderSide: BorderSide(color: Colors.grey[200]!),
+                            ),
+                            contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                          ),
+                          style: const TextStyle(color: Colors.black),
+                        ),
+                        const SizedBox(height: 16),
+                        // Password
+                        Stack(
+                          alignment: Alignment.centerRight,
+                          children: [
+                            TextField(
+                              controller: passwordController,
+                              obscureText: !showPassword,
+                              decoration: InputDecoration(
+                                hintText: 'Password',
+                                filled: true,
+                                fillColor: Colors.grey[50],
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(color: Colors.grey[200]!),
+                                ),
+                                enabledBorder: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(20),
+                                  borderSide: BorderSide(color: Colors.grey[200]!),
+                                ),
+                                contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                              ),
+                              style: const TextStyle(color: Colors.black),
+                            ),
+                            IconButton(
+                              icon: Icon(
+                                showPassword ? Icons.visibility_off : Icons.visibility,
+                                color: Colors.grey,
+                              ),
+                              onPressed: () {
+                                setState(() {
+                                  showPassword = !showPassword;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 24),
+                        // Sign In Button
+                        SizedBox(
+                          width: double.infinity,
+                          height: 56,
+                          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.of(context).pushReplacementNamed('/dashboard');
+                            },
+                            child: const Text('Sign In', style: TextStyle(fontSize: 18, color: Colors.white)),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Divider with 'or'
+                        Row(
+                          children: const [
+                            Expanded(child: Divider(color: Colors.grey)),
+                            Padding(
+                              padding: EdgeInsets.symmetric(horizontal: 8.0),
+                              child: Text('or', style: TextStyle(color: Colors.grey)),
+                            ),
+                            Expanded(child: Divider(color: Colors.grey)),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        // Create Account Button
+                        SizedBox(
+                          width: double.infinity,
+                          height: 56,
+                          child: OutlinedButton(
+                            style: OutlinedButton.styleFrom(
+                              side: const BorderSide(color: Color(0xFFD1D5DB)),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              backgroundColor: Colors.transparent,
+                            ),
+                            onPressed: () {},
+                            child: const Text('Create Account', style: TextStyle(fontSize: 18, color: Colors.black)),
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        // Forgot Password
+                        Center(
+                          child: TextButton(
+                            onPressed: () {},
+                            child: const Text('Forgot your password?', style: TextStyle(color: Colors.grey)),
                           ),
                         ),
                       ],
@@ -147,8 +199,8 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }
