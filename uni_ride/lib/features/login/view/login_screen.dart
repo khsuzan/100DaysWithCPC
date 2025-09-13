@@ -164,7 +164,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () {
-                              context.push('/dashboard');
+                              context.push('/home');
                             },
                             child: const Text(
                               'Sign In',

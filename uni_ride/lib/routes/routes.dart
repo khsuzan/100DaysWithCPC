@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:uni_ride/features/dashboard/view/dashboard_screen.dart';
 import 'package:uni_ride/features/map/view/map_screen.dart';
