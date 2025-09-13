@@ -13,6 +13,7 @@ class MyColors {
   static const Color buttonForeground = Color(0xFB0A1A0E);
   static const Color white = Color(0xFFFFFFFF);
   static const Color gray = Color(0xFF8F8F8F);
+  static const Color grayLight = Color(0xFFD1D5DB); // Used for light gray backgrounds, borders
   static const Color whiteTransparent = Color(0x25FFFFFF);
   static const Color black = Color(0xFF000000); 
 }

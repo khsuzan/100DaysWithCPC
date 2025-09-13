@@ -17,17 +17,17 @@ class DashboardShell extends StatelessWidget {
       body: child,
       bottomNavigationBar: _bottomNavigationBar(
         context: context,
-        goToDashboard: () {
-          context.push('/dashboard');
+        goToHome: () {
+          context.push('/home');
         },
-        goToRoutines: () {
-          context.push('/routine');
+        goToMap: () {
+          context.push('/map');
         },
-        goToCourses: () {
-          context.push('/courses');
+        goToSchedule: () {
+          context.push('/schedule');
         },
-        goToFees: () {
-          context.push('/profile');
+        goToFavorites: () {
+          context.push('/favorites');
         },
       ),
     );
@@ -35,19 +35,19 @@ class DashboardShell extends StatelessWidget {
 
   int _calculateSelectedIndex(BuildContext context) {
     final location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/dashboard')) return 0;
-    if (location.startsWith('/routine')) return 1;
-    if (location.startsWith('/courses')) return 2;
-    if (location.startsWith('/profile')) return 3;
+    if (location.startsWith('/home')) return 0;
+    if (location.startsWith('/map')) return 1;
+    if (location.startsWith('/schedule')) return 2;
+    if (location.startsWith('/favorites')) return 3;
     return 0;
   }
 
   Widget _bottomNavigationBar({
     required BuildContext context,
-    required VoidCallback goToDashboard,
-    required VoidCallback goToRoutines,
-    required VoidCallback goToCourses,
-    required VoidCallback goToFees,
+    required VoidCallback goToHome,
+    required VoidCallback goToMap,
+    required VoidCallback goToSchedule,
+    required VoidCallback goToFavorites,
   }) {
     return SafeArea(
       top: false,
@@ -65,51 +65,51 @@ class DashboardShell extends StatelessWidget {
             Expanded(
               child: _bottomNavigationItem(
                 selected: _calculateSelectedIndex(context) == 0,
-                name: "Dashboard",
+                name: "Home",
                 selectedSvgPath: "assets/icons/home_selected.svg",
                 unSelectSvgPath: "assets/icons/home.svg",
                 onTap: () {
                   if (_calculateSelectedIndex(context) != 0) {
-                    goToDashboard();
+                    goToHome();
                   }
                 },
               ),
             ),
             Expanded(
               child: _bottomNavigationItem(
-                selected:  _calculateSelectedIndex(context) == 1,
-                name: "Routine",
-                selectedSvgPath: "assets/icons/mortarboard_selected.svg",
-                unSelectSvgPath: "assets/icons/mortarboard.svg",
+                selected: _calculateSelectedIndex(context) == 1,
+                name: "Map",
+                selectedSvgPath: "assets/icons/map_selected.svg",
+                unSelectSvgPath: "assets/icons/map.svg",
                 onTap: () {
                   if (_calculateSelectedIndex(context) != 1) {
-                    goToRoutines();
+                    goToMap();
                   }
                 },
               ),
             ),
             Expanded(
               child: _bottomNavigationItem(
-                selected:  _calculateSelectedIndex(context) == 2,
-                name: "Courses",
-                selectedSvgPath: "assets/icons/list_tree.svg",
-                unSelectSvgPath: "assets/icons/list_tree.svg",
+                selected: _calculateSelectedIndex(context) == 2,
+                name: "Schedule",
+                selectedSvgPath: "assets/icons/schedule_selected.svg",
+                unSelectSvgPath: "assets/icons/schedule.svg",
                 onTap: () {
                   if (_calculateSelectedIndex(context) != 2) {
-                    goToCourses();
+                    goToSchedule();
                   }
                 },
               ),
             ),
             Expanded(
               child: _bottomNavigationItem(
-                selected:  _calculateSelectedIndex(context) == 3,
-                name: "Account",
-                selectedSvgPath: "assets/icons/profile_selected.svg",
-                unSelectSvgPath: "assets/icons/profile.svg",
+                selected: _calculateSelectedIndex(context) == 3,
+                name: "Favorites",
+                selectedSvgPath: "assets/icons/favorites_selected.svg",
+                unSelectSvgPath: "assets/icons/favorites.svg",
                 onTap: () {
                   if (_calculateSelectedIndex(context) != 3) {
-                    goToFees();
+                    goToFavorites();
                   }
                 },
               ),

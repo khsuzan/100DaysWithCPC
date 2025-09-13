@@ -1,8 +1,9 @@
-
 import 'package:flutter/material.dart';
+import '../../../utils/themes.dart';
+import 'package:go_router/go_router.dart';
 
 class LoginScreen extends StatefulWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+  const LoginScreen({super.key});
 
   @override
   State<LoginScreen> createState() => _LoginScreenState();
@@ -22,24 +23,13 @@ class _LoginScreenState extends State<LoginScreen> {
           children: [
             // Status Bar Simulation
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(5, (i) =>
-                Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: i == 2 ? Colors.black : Colors.black.withOpacity(0.4),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-            ),
             // Main Content
             Expanded(
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 0),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 24,
+                  vertical: 0,
+                ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
@@ -57,21 +47,32 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(24),
                             ),
                             child: const Center(
-                              child: Icon(Icons.directions_bus, color: Colors.white, size: 48),
+                              child: Icon(
+                                Icons.directions_bus,
+                                color: Colors.white,
+                                size: 48,
+                              ),
                             ),
                           ),
                           const SizedBox(height: 32),
                           // Title & Subtitle
                           const Text(
                             'Campus Transit',
-                            style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black),
+                            style: TextStyle(
+                              fontSize: 28,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                            ),
                           ),
                           const SizedBox(height: 12),
                           const Padding(
                             padding: EdgeInsets.symmetric(horizontal: 16),
                             child: Text(
                               'Track your campus buses in real-time and never miss a ride',
-                              style: TextStyle(fontSize: 16, color: Colors.grey),
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: Colors.grey,
+                              ),
                               textAlign: TextAlign.center,
                             ),
                           ),
@@ -97,7 +98,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               borderRadius: BorderRadius.circular(20),
                               borderSide: BorderSide(color: Colors.grey[200]!),
                             ),
-                            contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                            contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 24,
+                              vertical: 20,
+                            ),
                           ),
                           style: const TextStyle(color: Colors.black),
                         ),
@@ -115,19 +119,28 @@ class _LoginScreenState extends State<LoginScreen> {
                                 fillColor: Colors.grey[50],
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.grey[200]!),
+                                  borderSide: BorderSide(
+                                    color: Colors.grey[200]!,
+                                  ),
                                 ),
                                 enabledBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(20),
-                                  borderSide: BorderSide(color: Colors.grey[200]!),
+                                  borderSide: BorderSide(
+                                    color: Colors.grey[200]!,
+                                  ),
                                 ),
-                                contentPadding: const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
+                                contentPadding: const EdgeInsets.symmetric(
+                                  horizontal: 24,
+                                  vertical: 20,
+                                ),
                               ),
                               style: const TextStyle(color: Colors.black),
                             ),
                             IconButton(
                               icon: Icon(
-                                showPassword ? Icons.visibility_off : Icons.visibility,
+                                showPassword
+                                    ? Icons.visibility_off
+                                    : Icons.visibility,
                                 color: Colors.grey,
                               ),
                               onPressed: () {
@@ -151,9 +164,15 @@ class _LoginScreenState extends State<LoginScreen> {
                               ),
                             ),
                             onPressed: () {
-                              Navigator.of(context).pushReplacementNamed('/dashboard');
+                              context.push('/dashboard');
                             },
-                            child: const Text('Sign In', style: TextStyle(fontSize: 18, color: Colors.white)),
+                            child: const Text(
+                              'Sign In',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.white,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -163,7 +182,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             Expanded(child: Divider(color: Colors.grey)),
                             Padding(
                               padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text('or', style: TextStyle(color: Colors.grey)),
+                              child: Text(
+                                'or',
+                                style: TextStyle(color: Colors.grey),
+                              ),
                             ),
                             Expanded(child: Divider(color: Colors.grey)),
                           ],
@@ -175,14 +197,20 @@ class _LoginScreenState extends State<LoginScreen> {
                           height: 56,
                           child: OutlinedButton(
                             style: OutlinedButton.styleFrom(
-                              side: const BorderSide(color: Color(0xFFD1D5DB)),
+                              side: BorderSide(color: MyColors.grayLight),
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               backgroundColor: Colors.transparent,
                             ),
                             onPressed: () {},
-                            child: const Text('Create Account', style: TextStyle(fontSize: 18, color: Colors.black)),
+                            child: const Text(
+                              'Create Account',
+                              style: TextStyle(
+                                fontSize: 18,
+                                color: Colors.black,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: 16),
@@ -190,7 +218,10 @@ class _LoginScreenState extends State<LoginScreen> {
                         Center(
                           child: TextButton(
                             onPressed: () {},
-                            child: const Text('Forgot your password?', style: TextStyle(color: Colors.grey)),
+                            child: const Text(
+                              'Forgot your password?',
+                              style: TextStyle(color: Colors.grey),
+                            ),
                           ),
                         ),
                       ],

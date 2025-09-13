@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class OnboardScreen extends StatefulWidget {
-  const OnboardScreen({Key? key}) : super(key: key);
+  const OnboardScreen({super.key});
 
   @override
   State<OnboardScreen> createState() => _OnboardScreenState();
@@ -35,7 +35,7 @@ class _OnboardScreenState extends State<OnboardScreen> {
     ),
     _OnboardingStep(
       icon: Icons.star,
-      title: "Personalized Experience",
+      title: "Personalized Experience", 
       description:
           "Save your favorite stops and routes for quick access to what matters most.",
       image: "⭐",
@@ -79,61 +79,49 @@ class _OnboardScreenState extends State<OnboardScreen> {
           children: [
             // Status Bar Simulation
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                5,
-                (i) => Container(
-                  margin: const EdgeInsets.symmetric(horizontal: 2),
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color:
-                        i == 2 ? Colors.black : Colors.black.withOpacity(0.4),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-              ),
-            ),
             // Header with Skip and Progress
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  SizedBox(
-                    width: 48,
-                    child:
-                        currentStep > 0
-                            ? IconButton(
-                              icon: const Icon(
-                                Icons.chevron_left,
-                                color: Colors.grey,
-                              ),
-                              onPressed: prevStep,
-                            )
-                            : null,
+                  Expanded(
+                    child: Align(
+                      alignment: Alignment.centerLeft,
+                      child:
+                          currentStep > 0
+                              ? IconButton(
+                                icon: const Icon(
+                                  Icons.chevron_left,
+                                  color: Colors.grey,
+                                ),
+                                onPressed: prevStep,
+                              )
+                              : SizedBox(),
+                    ),
                   ),
-                  Row(
-                    children: List.generate(
-                      onboardingSteps.length,
-                      (index) => AnimatedContainer(
-                        duration: const Duration(milliseconds: 300),
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        width: index == currentStep ? 24 : 8,
-                        height: 8,
-                        decoration: BoxDecoration(
-                          color:
-                              index == currentStep
-                                  ? Colors.black
-                                  : Colors.grey[300],
-                          borderRadius: BorderRadius.circular(8),
+                  Expanded(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        onboardingSteps.length,
+                        (index) => AnimatedContainer(
+                          duration: const Duration(milliseconds: 300),
+                          margin: const EdgeInsets.symmetric(horizontal: 4),
+                          width: index == currentStep ? 24 : 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            color:
+                                index == currentStep
+                                    ? Colors.black
+                                    : Colors.grey[300],
+                            borderRadius: BorderRadius.circular(8),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  SizedBox(
-                    width: 48,
+                  Expanded(
                     child: Align(
                       alignment: Alignment.centerRight,
                       child: TextButton(
