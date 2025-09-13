@@ -411,7 +411,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
         decoration: BoxDecoration(
           color: MyColors.background,
           border: Border(
-            bottom: BorderSide(color: MyColors.accentGreen.withAlpha(10)),
+            bottom: BorderSide(color: MyColors.accent.withAlpha(10)),
           ),
         ),
         child: Row(
@@ -423,7 +423,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 child: Container(
                   height: 48.h,
                   width: 48.h,
-                  color: MyColors.accentGreen.withAlpha(50),
+                  color: MyColors.accent.withAlpha(50),
                   child: Image.asset("assets/images/robo.png"),
                 ),
               ),
@@ -443,7 +443,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     style: TextStyle(
                       fontSize: 18.sp,
                       fontWeight: FontWeight.w500,
-                      color: MyColors.accentGreen,
+                      color: MyColors.accent,
                     ),
                   ),
                 ],
@@ -452,8 +452,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
             InkWell(
               onTap: () {},
               borderRadius: BorderRadius.circular(50),
-              highlightColor: MyColors.accentGreen.withAlpha(50),
-              splashColor: MyColors.accentGreen.withAlpha(50),
+              highlightColor: MyColors.accent.withAlpha(50),
+              splashColor: MyColors.accent.withAlpha(50),
               child: Padding(
                 padding: EdgeInsets.all(12.w),
                 child: SvgPicture.asset(
@@ -489,7 +489,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   borderRadius: BorderRadius.circular(50.h),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: MyColors.accentGreen,
+                      color: MyColors.accent,
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 8.r,
                         cornerSmoothing: 1.0,
@@ -525,8 +525,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
       padding: EdgeInsets.symmetric(vertical: 4.h),
       child: InkWell(
         onTap: () {},
-        highlightColor: MyColors.accentGreen.withAlpha(50),
-        splashColor: MyColors.accentGreen.withAlpha(50),
+        highlightColor: MyColors.accent.withAlpha(50),
+        splashColor: MyColors.accent.withAlpha(50),
         child: Container(
           padding: EdgeInsets.symmetric(vertical: 8.h),
           color: MyColors.backgroundLight,
@@ -539,7 +539,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   width: 50,
                   clipBehavior: Clip.antiAlias,
                   decoration: BoxDecoration(
-                    color: MyColors.accentGreen.withAlpha(50),
+                    color: MyColors.accent.withAlpha(50),
                     borderRadius: BorderRadius.circular(8.w),
                   ),
                   child: Image.asset("assets/images/robo.png"),
@@ -555,7 +555,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         style: TextStyle(
                           fontSize: 16.sp,
                           fontWeight: FontWeight.w500,
-                          color: MyColors.accentGreen,
+                          color: MyColors.accent,
                         ),
                       ),
                       SizedBox(height: 4.h),
@@ -599,7 +599,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                   borderRadius: BorderRadius.circular(50.h),
                   child: Container(
                     decoration: BoxDecoration(
-                      color: MyColors.accentGreen,
+                      color: MyColors.accent,
                       borderRadius: SmoothBorderRadius(
                         cornerRadius: 8.r,
                         cornerSmoothing: 1.0,
@@ -646,7 +646,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                 width: 50,
                 clipBehavior: Clip.antiAlias,
                 decoration: BoxDecoration(
-                  color: MyColors.accentGreen.withAlpha(50),
+                  color: MyColors.accent.withAlpha(50),
                   borderRadius: BorderRadius.circular(8.w),
                 ),
                 child: Image.asset("assets/images/robo.png"),
@@ -662,7 +662,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       style: TextStyle(
                         fontSize: 16.sp,
                         fontWeight: FontWeight.w500,
-                        color: MyColors.accentGreen,
+                        color: MyColors.accent,
                       ),
                     ),
                     SizedBox(height: 4.h),
@@ -673,7 +673,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         children: [
                           TextSpan(
                             text: "Read More",
-                            style: TextStyle(color: MyColors.accentGreen),
+                            style: TextStyle(color: MyColors.accent),
                           ),
                         ],
                         style: TextStyle(color: MyColors.gray),

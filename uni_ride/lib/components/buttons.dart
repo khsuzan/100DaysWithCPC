@@ -25,7 +25,7 @@ class MyButtonSolid extends StatelessWidget {
           ),
         ),
         padding: WidgetStatePropertyAll(EdgeInsets.symmetric(vertical: 18.h)),
-        backgroundColor: WidgetStatePropertyAll(MyColors.accentGreen),
+        backgroundColor: WidgetStatePropertyAll(MyColors.accent),
         shadowColor: WidgetStatePropertyAll(MyColors.buttonShadow),
         foregroundColor: WidgetStatePropertyAll(MyColors.buttonForeground),
         textStyle: WidgetStatePropertyAll(

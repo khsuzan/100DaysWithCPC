@@ -22,7 +22,7 @@ class MainApp extends StatelessWidget {
             primarySwatch: Colors.lightGreen,
             textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
             textSelectionTheme: TextSelectionThemeData(
-              cursorColor: MyColors.accentGreen,
+              cursorColor: MyColors.accent,
               selectionColor: MyColors.whiteTransparent.withAlpha(100),
               selectionHandleColor: MyColors.whiteTransparent.withAlpha(100),
             ),

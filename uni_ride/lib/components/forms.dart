@@ -41,8 +41,8 @@ class _PhoneVerificationFormState extends State<PhoneVerificationForm> {
               shaderCallback:
                   (bounds) => LinearGradient(
                     colors: [
-                      MyColors.accentGreen,
-                      MyColors.accentGreenTransparent,
+                      MyColors.accent,
+                      MyColors.accentTransparent,
                     ],
                   ).createShader(
                     Rect.fromLTWH(0, 0, bounds.width, bounds.height),

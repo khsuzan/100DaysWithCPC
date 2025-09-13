@@ -23,7 +23,7 @@ class MyTextField extends StatelessWidget {
           color: MyColors.white.withAlpha((0.5 * 255).toInt()),
         ),
         filled: true,
-        fillColor: MyColors.accentGreen.withAlpha(10),
+        fillColor: MyColors.accent.withAlpha(10),
         contentPadding: EdgeInsets.all(20.w),
         enabledBorder: OutlineInputBorder(
           borderSide: BorderSide(color: MyColors.whiteTransparent),
@@ -33,14 +33,14 @@ class MyTextField extends StatelessWidget {
           ),
         ),
         focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: MyColors.accentGreen),
+          borderSide: BorderSide(color: MyColors.accent),
           borderRadius: SmoothBorderRadius(
             cornerRadius: 16.w,
             cornerSmoothing: 1,
           ),
         ),
       ),
-      style: TextStyle(color: MyColors.accentGreen),
+      style: TextStyle(color: MyColors.accent),
       controller: controller,
       focusNode: focusNode,
     );

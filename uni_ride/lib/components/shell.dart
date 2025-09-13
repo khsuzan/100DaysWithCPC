@@ -55,7 +55,7 @@ class DashboardShell extends StatelessWidget {
         decoration: BoxDecoration(
           color: MyColors.background,
           border: Border(
-            top: BorderSide(color: MyColors.accentGreen.withAlpha(10)),
+            top: BorderSide(color: MyColors.accent.withAlpha(10)),
           ),
         ),
         height: kBottomNavigationBarHeight + 10.h,
@@ -129,8 +129,8 @@ class DashboardShell extends StatelessWidget {
   }) {
     return InkWell(
       onTap: onTap,
-      highlightColor: MyColors.accentGreen.withAlpha(50),
-      splashColor: MyColors.accentGreen.withAlpha(50),
+      highlightColor: MyColors.accent.withAlpha(50),
+      splashColor: MyColors.accent.withAlpha(50),
       child: ShaderMask(
         shaderCallback: (bounds) {
           if (selected) {
@@ -138,7 +138,7 @@ class DashboardShell extends StatelessWidget {
             return LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: [MyColors.accentGreen, MyColors.accentGreenTransparent],
+              colors: [MyColors.accent, MyColors.accentTransparent],
             ).createShader(
               Rect.fromLTWH(0, 0, bounds.width, bounds.height + 20),
             );
@@ -162,7 +162,7 @@ class DashboardShell extends StatelessWidget {
               height: 24.h,
               colorFilter: ColorFilter.mode(
                 selected
-                    ? MyColors.accentGreen
+                    ? MyColors.accent
                     : const Color(0xFFA3A3A3).withAlpha(180),
                 BlendMode.srcIn,
               ),
@@ -175,7 +175,7 @@ class DashboardShell extends StatelessWidget {
                 fontSize: 14.sp,
                 color:
                     selected
-                        ? MyColors.accentGreen
+                        ? MyColors.accent
                         : const Color(0xFFA3A3A3).withAlpha(180),
               ),
             ),
