@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/themes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ScheduleScreen extends StatefulWidget {
   const ScheduleScreen({Key? key}) : super(key: key);
@@ -11,9 +12,7 @@ class ScheduleScreen extends StatefulWidget {
 class _ScheduleScreenState extends State<ScheduleScreen> {
   int selectedDayIndex = 0;
 
-  final List<String> days = [
-    'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'
-  ];
+  final List<String> days = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 
   final List<Map<String, dynamic>> schedules = [
     {
@@ -82,7 +81,12 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back, color: MyColors.black),
+                    icon: SvgPicture.asset(
+                      'assets/icons/arrow_back.svg',
+                      color: MyColors.black,
+                      width: 24,
+                      height: 24,
+                    ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   Text(
@@ -94,7 +98,12 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.more_horiz, color: MyColors.black),
+                    icon: SvgPicture.asset(
+                      'assets/icons/more_horiz.svg',
+                      color: MyColors.black,
+                      width: 24,
+                      height: 24,
+                    ),
                     onPressed: () {},
                   ),
                 ],
@@ -106,10 +115,16 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.chevron_left, color: MyColors.black),
-                    onPressed: selectedDayIndex > 0
-                        ? () => setState(() => selectedDayIndex--)
-                        : null,
+                    icon: SvgPicture.asset(
+                      'assets/icons/chevron_left.svg',
+                      color: MyColors.black,
+                      width: 24,
+                      height: 24,
+                    ),
+                    onPressed:
+                        selectedDayIndex > 0
+                            ? () => setState(() => selectedDayIndex--)
+                            : null,
                   ),
                   Row(
                     children: List.generate(days.length, (i) {
@@ -118,17 +133,27 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                         onTap: () => setState(() => selectedDayIndex = i),
                         child: Container(
                           margin: const EdgeInsets.symmetric(horizontal: 4),
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 12,
+                            vertical: 8,
+                          ),
                           decoration: BoxDecoration(
                             color: isSelected ? MyColors.black : MyColors.white,
                             borderRadius: BorderRadius.circular(16),
-                            border: Border.all(color: isSelected ? MyColors.black : MyColors.gray),
+                            border: Border.all(
+                              color:
+                                  isSelected ? MyColors.black : MyColors.gray,
+                            ),
                           ),
                           child: Text(
                             days[i],
                             style: TextStyle(
-                              color: isSelected ? MyColors.white : MyColors.black,
-                              fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
+                              color:
+                                  isSelected ? MyColors.white : MyColors.black,
+                              fontWeight:
+                                  isSelected
+                                      ? FontWeight.bold
+                                      : FontWeight.normal,
                             ),
                           ),
                         ),
@@ -136,10 +161,16 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                     }),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.chevron_right, color: MyColors.black),
-                    onPressed: selectedDayIndex < days.length - 1
-                        ? () => setState(() => selectedDayIndex++)
-                        : null,
+                    icon: SvgPicture.asset(
+                      'assets/icons/chevron_right.svg',
+                      color: MyColors.black,
+                      width: 24,
+                      height: 24,
+                    ),
+                    onPressed:
+                        selectedDayIndex < days.length - 1
+                            ? () => setState(() => selectedDayIndex++)
+                            : null,
                   ),
                 ],
               ),
@@ -166,7 +197,10 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                       ],
                     ),
                     child: ListTile(
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                      contentPadding: const EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 12,
+                      ),
                       leading: Container(
                         width: 48,
                         height: 48,
@@ -196,9 +230,14 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             ),
                           ),
                           if (schedule['isFavorite'] == true)
-                            const Padding(
+                            Padding(
                               padding: EdgeInsets.only(left: 6),
-                              child: Icon(Icons.star, size: 18, color: MyColors.black),
+                              child: SvgPicture.asset(
+                                'assets/icons/star.svg',
+                                color: MyColors.black,
+                                width: 18,
+                                height: 18,
+                              ),
                             ),
                         ],
                       ),
@@ -213,7 +252,12 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                         ),
                       ),
                       trailing: IconButton(
-                        icon: const Icon(Icons.notifications_none, color: MyColors.black),
+                        icon: SvgPicture.asset(
+                          'assets/icons/notifications_none.svg',
+                          color: MyColors.black,
+                          width: 22,
+                          height: 22,
+                        ),
                         onPressed: () {},
                       ),
                     ),

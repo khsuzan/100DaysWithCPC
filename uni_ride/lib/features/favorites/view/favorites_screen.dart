@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import '../../../utils/themes.dart';
 
 class FavoritesScreen extends StatefulWidget {
@@ -14,35 +15,35 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
       'name': 'Main Gate',
       'type': 'Stop',
       'route': 'Route A',
-      'icon': Icons.location_pin,
+  'icon': 'assets/icons/location_pin.svg',
       'isActive': true,
     },
     {
       'name': 'Library',
       'type': 'Stop',
       'route': 'Route B',
-      'icon': Icons.location_pin,
+  'icon': 'assets/icons/location_pin.svg',
       'isActive': false,
     },
     {
       'name': 'Route A',
       'type': 'Route',
       'route': 'Route A',
-      'icon': Icons.directions_bus,
+  'icon': 'assets/icons/directions_bus.svg',
       'isActive': true,
     },
     {
       'name': 'Dormitory A',
       'type': 'Stop',
       'route': 'Route C',
-      'icon': Icons.location_pin,
+  'icon': 'assets/icons/location_pin.svg',
       'isActive': false,
     },
     {
       'name': 'Route B',
       'type': 'Route',
       'route': 'Route B',
-      'icon': Icons.directions_bus,
+  'icon': 'assets/icons/directions_bus.svg',
       'isActive': false,
     },
   ];
@@ -62,7 +63,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    icon: const Icon(Icons.arrow_back, color: MyColors.black),
+                    icon: SvgPicture.asset('assets/icons/arrow_back.svg', color: MyColors.black, width: 24, height: 24),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
                   const Text(
@@ -74,7 +75,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                     ),
                   ),
                   IconButton(
-                    icon: const Icon(Icons.more_horiz, color: MyColors.black),
+                    icon: SvgPicture.asset('assets/icons/more_horiz.svg', color: MyColors.black, width: 24, height: 24),
                     onPressed: () {},
                   ),
                 ],
@@ -91,7 +92,7 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                   ),
                   TextButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.add, color: MyColors.black),
+                    icon: SvgPicture.asset('assets/icons/add.svg', color: MyColors.black, width: 20, height: 20),
                     label: const Text('Add', style: TextStyle(color: MyColors.black)),
                     style: TextButton.styleFrom(
                       foregroundColor: MyColors.black,
@@ -136,10 +137,11 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                                 borderRadius: BorderRadius.circular(16),
                               ),
                               child: Center(
-                                child: Icon(
+                                child: SvgPicture.asset(
                                   fav['icon'],
                                   color: fav['isActive'] ? MyColors.white : MyColors.black,
-                                  size: 28,
+                                  width: 28,
+                                  height: 28,
                                 ),
                               ),
                             ),
@@ -165,12 +167,12 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
                               mainAxisSize: MainAxisSize.min,
                               children: [
                                 IconButton(
-                                  icon: const Icon(Icons.notifications_none, color: MyColors.black),
+                                  icon: SvgPicture.asset('assets/icons/notifications_none.svg', color: MyColors.black, width: 22, height: 22),
                                   onPressed: () {},
                                   tooltip: 'Set Alert',
                                 ),
                                 IconButton(
-                                  icon: const Icon(Icons.delete_outline, color: MyColors.black),
+                                  icon: SvgPicture.asset('assets/icons/delete_outline.svg', color: MyColors.black, width: 22, height: 22),
                                   onPressed: () {},
                                   tooltip: 'Remove',
                                 ),

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../utils/themes.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class MapScreen extends StatefulWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -97,7 +98,7 @@ class _MapScreenState extends State<MapScreen> {
                 Row(
                   children: [
                     IconButton(
-                      icon: const Icon(Icons.arrow_back, color: MyColors.black),
+                      icon: SvgPicture.asset('assets/icons/arrow_back.svg', color: MyColors.black, width: 24, height: 24),
                       onPressed: () => Navigator.of(context).pop(),
                     ),
                     Column(
@@ -110,7 +111,7 @@ class _MapScreenState extends State<MapScreen> {
                   ],
                 ),
                 IconButton(
-                  icon: const Icon(Icons.more_horiz, color: MyColors.black),
+                  icon: SvgPicture.asset('assets/icons/more_horiz.svg', color: MyColors.black, width: 24, height: 24),
                   onPressed: () {},
                 ),
               ],
@@ -245,18 +246,18 @@ class _MapScreenState extends State<MapScreen> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Row(
-                        children: const [
-                          Icon(Icons.navigation, size: 20, color: MyColors.black),
-                          SizedBox(width: 8),
-                          Text('Live Map', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: MyColors.black)),
+                        children: [
+                          SvgPicture.asset('assets/icons/navigation.svg', color: MyColors.black, width: 20, height: 20),
+                          const SizedBox(width: 8),
+                          const Text('Live Map', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: MyColors.black)),
                         ],
                       ),
                       OutlinedButton.icon(
                         onPressed: () {},
-                        icon: const Icon(Icons.location_pin, size: 16, color: MyColors.black),
+                        icon: SvgPicture.asset('assets/icons/location_pin.svg', color: MyColors.black, width: 16, height: 16),
                         label: const Text('Center', style: TextStyle(color: MyColors.black)),
                         style: OutlinedButton.styleFrom(
-                          side: BorderSide(color: MyColors.gray),
+                          side: const BorderSide(color: MyColors.gray),
                           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
                           backgroundColor: MyColors.white,
                           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 0),
@@ -306,7 +307,7 @@ class _MapScreenState extends State<MapScreen> {
                           alignment: Alignment.bottomCenter,
                           child: Padding(
                             padding: const EdgeInsets.only(bottom: 12),
-                            child: Icon(Icons.location_pin, size: 32, color: MyColors.gray),
+                            child: SvgPicture.asset('assets/icons/location_pin.svg', color: MyColors.gray, width: 32, height: 32),
                           ),
                         ),
                       ],
@@ -387,9 +388,9 @@ class _MapScreenState extends State<MapScreen> {
                                     children: [
                                       Text(stop['name'], style: TextStyle(fontSize: 15, color: isCurrent ? MyColors.black : MyColors.black)),
                                       if (stop['favorite'] == true)
-                                        const Padding(
+                                        Padding(
                                           padding: EdgeInsets.only(left: 4),
-                                          child: Icon(Icons.star, size: 16, color: MyColors.black),
+                                          child: SvgPicture.asset('assets/icons/star.svg', color: MyColors.black, width: 16, height: 16),
                                         ),
                                     ],
                                   ),
@@ -410,7 +411,7 @@ class _MapScreenState extends State<MapScreen> {
                                 ),
                                 child: Row(
                                   children: [
-                                    const Icon(Icons.access_time, size: 14, color: MyColors.gray),
+                                    SvgPicture.asset('assets/icons/access_time.svg', color: MyColors.gray, width: 14, height: 14),
                                     const SizedBox(width: 2),
                                     Text(stop['eta'], style: const TextStyle(fontSize: 12, color: MyColors.gray)),
                                   ],
@@ -433,7 +434,7 @@ class _MapScreenState extends State<MapScreen> {
                 Expanded(
                   child: ElevatedButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.star, color: MyColors.white),
+                    icon: SvgPicture.asset('assets/icons/star.svg', color: MyColors.white, width: 22, height: 22),
                     label: const Text('Save Stop'),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: MyColors.black,
@@ -447,10 +448,10 @@ class _MapScreenState extends State<MapScreen> {
                 Expanded(
                   child: OutlinedButton.icon(
                     onPressed: () {},
-                    icon: const Icon(Icons.notifications_none, color: MyColors.black),
+                    icon: SvgPicture.asset('assets/icons/notifications_none.svg', color: MyColors.black, width: 22, height: 22),
                     label: const Text('Set Alert', style: TextStyle(color: MyColors.black)),
                     style: OutlinedButton.styleFrom(
-                      side: BorderSide(color: MyColors.gray),
+                      side: const BorderSide(color: MyColors.gray),
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
                       backgroundColor: MyColors.white,
                       padding: const EdgeInsets.symmetric(vertical: 18),
