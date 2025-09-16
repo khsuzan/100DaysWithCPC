@@ -20,7 +20,11 @@ class MainApp extends StatelessWidget {
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
             primarySwatch: Colors.lightGreen,
-            textTheme: Typography.englishLike2018.apply(fontSizeFactor: 1.sp),
+            textTheme: Typography.englishLike2018.apply(
+              fontSizeFactor: 1.sp,
+              bodyColor: Colors.black,
+              displayColor: Colors.black,
+            ),
             textSelectionTheme: TextSelectionThemeData(
               cursorColor: MyColors.accent,
               selectionColor: MyColors.whiteTransparent.withAlpha(100),

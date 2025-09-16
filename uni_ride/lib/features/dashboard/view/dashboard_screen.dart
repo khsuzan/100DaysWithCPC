@@ -501,7 +501,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     child: Text(
                       "6-Sep-2025",
-                      style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                      style: TextStyle(fontSize: 13.sp, color: MyColors.black),
                     ),
                   ),
                 ),
@@ -611,7 +611,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                     ),
                     child: Text(
                       "Show All",
-                      style: TextStyle(fontSize: 13.sp, color: MyColors.white),
+                      style: TextStyle(fontSize: 13.sp, color: MyColors.black),
                     ),
                   ),
                 ),
