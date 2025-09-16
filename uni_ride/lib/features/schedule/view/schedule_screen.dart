@@ -126,39 +126,44 @@ class _ScheduleScreenState extends State<ScheduleScreen> {
                             ? () => setState(() => selectedDayIndex--)
                             : null,
                   ),
-                  Row(
-                    children: List.generate(days.length, (i) {
-                      final isSelected = i == selectedDayIndex;
-                      return GestureDetector(
-                        onTap: () => setState(() => selectedDayIndex = i),
-                        child: Container(
-                          margin: const EdgeInsets.symmetric(horizontal: 4),
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 12,
-                            vertical: 8,
-                          ),
-                          decoration: BoxDecoration(
-                            color: isSelected ? MyColors.black : MyColors.white,
-                            borderRadius: BorderRadius.circular(16),
-                            border: Border.all(
-                              color:
-                                  isSelected ? MyColors.black : MyColors.gray,
+                  Expanded(
+                    child: SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        children: List.generate(days.length, (i) {
+                          final isSelected = i == selectedDayIndex;
+                          return GestureDetector(
+                            onTap: () => setState(() => selectedDayIndex = i),
+                            child: Container(
+                              margin: const EdgeInsets.symmetric(horizontal: 4),
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 12,
+                                vertical: 8,
+                              ),
+                              decoration: BoxDecoration(
+                                color: isSelected ? MyColors.black : MyColors.white,
+                                borderRadius: BorderRadius.circular(16),
+                                border: Border.all(
+                                  color:
+                                      isSelected ? MyColors.black : MyColors.gray,
+                                ),
+                              ),
+                              child: Text(
+                                days[i],
+                                style: TextStyle(
+                                  color:
+                                      isSelected ? MyColors.white : MyColors.black,
+                                  fontWeight:
+                                      isSelected
+                                          ? FontWeight.bold
+                                          : FontWeight.normal,
+                                ),
+                              ),
                             ),
-                          ),
-                          child: Text(
-                            days[i],
-                            style: TextStyle(
-                              color:
-                                  isSelected ? MyColors.white : MyColors.black,
-                              fontWeight:
-                                  isSelected
-                                      ? FontWeight.bold
-                                      : FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      );
-                    }),
+                          );
+                        }),
+                      ),
+                    ),
                   ),
                   IconButton(
                     icon: SvgPicture.asset(
