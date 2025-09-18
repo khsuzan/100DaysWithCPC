@@ -1,6 +1,7 @@
 import 'package:go_router/go_router.dart';
 import 'package:uni_ride/features/dashboard/view/dashboard_screen.dart';
 import 'package:uni_ride/features/map/view/map_screen.dart';
+import 'package:uni_ride/features/registration/view/registration_screen.dart';
 import 'package:uni_ride/features/schedule/view/schedule_screen.dart';
 import 'package:uni_ride/features/favorites/view/favorites_screen.dart';
 
@@ -13,6 +14,7 @@ final router = GoRouter(
   routes: [
     GoRoute(path: '/', builder: (context, state) => OnboardScreen()),
     GoRoute(path: '/login', builder: (context, state) => LoginScreen()),
+    GoRoute(path: '/registration', builder: (context, state) => RegistrationScreen()),
     ShellRoute(
       builder: (context, state, child) {
         return DashboardShell(child: child); // Widget with bottom nav

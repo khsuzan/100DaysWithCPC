@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import '../../../utils/themes.dart';
 import 'package:go_router/go_router.dart';
 
-class LoginScreen extends StatefulWidget {
-  const LoginScreen({super.key});
+class RegistrationScreen extends StatefulWidget {
+  const RegistrationScreen({super.key});
 
   @override
-  State<LoginScreen> createState() => _LoginScreenState();
+  State<RegistrationScreen> createState() => _RegistrationScreenState();
 }
 
-class _LoginScreenState extends State<LoginScreen> {
+class _RegistrationScreenState extends State<RegistrationScreen> {
   bool showPassword = false;
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
@@ -167,7 +167,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               context.push('/home');
                             },
                             child: const Text(
-                              'Sign In',
+                              'Sign Up',
                               style: TextStyle(
                                 fontSize: 18,
                                 color: Colors.white,
@@ -175,57 +175,8 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                           ),
                         ),
-                        const SizedBox(height: 16),
                         // Divider with 'or'
-                        Row(
-                          children: const [
-                            Expanded(child: Divider(color: Colors.grey)),
-                            Padding(
-                              padding: EdgeInsets.symmetric(horizontal: 8.0),
-                              child: Text(
-                                'or',
-                                style: TextStyle(color: Colors.grey),
-                              ),
-                            ),
-                            Expanded(child: Divider(color: Colors.grey)),
-                          ],
-                        ),
-                        const SizedBox(height: 16),
-                        // Create Account Button
-                        SizedBox(
-                          width: double.infinity,
-                          height: 56,
-                          child: OutlinedButton(
-                            style: OutlinedButton.styleFrom(
-                              side: BorderSide(color: MyColors.grayLight),
-                              shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20),
-                              ),
-                              backgroundColor: Colors.transparent,
-                            ),
-                            onPressed: () {
-                              context.push("/registration");
-                            },
-                            child: const Text(
-                              'Create Account',
-                              style: TextStyle(
-                                fontSize: 18,
-                                color: Colors.black,
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(height: 16),
-                        // Forgot Password
-                        Center(
-                          child: TextButton(
-                            onPressed: () {},
-                            child: const Text(
-                              'Forgot your password?',
-                              style: TextStyle(color: Colors.grey),
-                            ),
-                          ),
-                        ),
+                        const SizedBox(height: 180),
                       ],
                     ),
                   ],
