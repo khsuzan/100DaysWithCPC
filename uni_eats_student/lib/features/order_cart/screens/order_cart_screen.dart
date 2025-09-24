@@ -9,7 +9,7 @@ class OrderCartScreen extends StatelessWidget {
 
   OrderCartScreen({Key? key}) : super(key: key);
 
-  int get totalPrice => cartItems.fold(0, (sum, item) => sum + (item['price'] * item['quantity']));
+  int get totalPrice => cartItems.fold(0, (sum, item) => (sum + (item['price'] * item['quantity'])).toInt());
 
   @override
   Widget build(BuildContext context) {
