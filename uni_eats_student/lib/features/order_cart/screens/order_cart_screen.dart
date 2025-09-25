@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../theme/app_colors.dart';
+import 'payment_screen.dart';
 
 class OrderCartScreen extends StatelessWidget {
   final List<Map<String, dynamic>> cartItems = [
@@ -57,10 +58,15 @@ class OrderCartScreen extends StatelessWidget {
                   backgroundColor: AppColors.primary,
                   padding: EdgeInsets.symmetric(vertical: 16),
                 ),
-                onPressed: () {
-                  // TODO: Implement checkout functionality
-                },
-                child: Text('Checkout', style: TextStyle(fontSize: 18, color: Colors.white)),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PaymentScreen(totalAmount: totalPrice),
+                      ),
+                    );
+                  },
+                  child: Text('Checkout', style: TextStyle(fontSize: 18, color: Colors.white)),
               ),
             ),
           ],
@@ -69,3 +75,4 @@ class OrderCartScreen extends StatelessWidget {
     );
   }
 }
+
